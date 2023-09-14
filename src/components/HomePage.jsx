@@ -19,7 +19,7 @@ export default function HomePage({
       }}
     >
       <Navbar />
-      <div className="absolute top-1/3 left-[5%] md:top-[35%]  w-[400px] text-white">
+      <div className="absolute top-1/4 left-[3%] md:top-[35%]  w-[350px] md:w-[400px] text-white">
         <h1 className=" text-5xl font-bold">{title || name}</h1>
         <div className="flex items-center gap-12">
           <div className="flex gap-1">
