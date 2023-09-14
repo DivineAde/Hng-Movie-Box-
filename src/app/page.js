@@ -4,7 +4,7 @@ import Results from "@/components/Results";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 
-const API_KEY = process.env.API_KEY;
+const API_KEY = "a7b45b91a4a49e51474aed718b0bb738";
 
 export default async function Home({ searchParams }) {
   const genre = searchParams.genre || "fetchTrending";
