@@ -30,7 +30,7 @@ export default function HomePage({
             />
             <span>{rating} / 10.0</span>
           </div>
-          <div className="flex gap-1">
+          <div className="flex items-center gap-1">
             <p>{ratingPercentage}%</p>
             <img src="/PngItem_1381056 1.png" alt="rotten tomato score" />
           </div>

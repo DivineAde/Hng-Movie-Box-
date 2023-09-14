@@ -47,7 +47,7 @@ export default async function Home({ searchParams }) {
 
       <div>
         <div className="flex justify-between items-center max-w-6xl mx-4 md:mx-auto py-4 text-lg">
-          <h1 className=" md:text-3xl font-extrabold capitalize">
+          <h1 className=" md:text-3xl font-semibold capitalize">
             Feature Movies
           </h1>
           <Link href="/more" className="underline text-red-400">

@@ -76,9 +76,9 @@ export default function Card({ result }) {
             />
             <span>{voteAverage} / 10.0</span>
           </div>
-          <div className="flex gap-1">
+          <div className="flex items-center gap-1">
             <p>{ratingPercentage}%</p>
-            <img src="/PngItem_1381056 1.png" alt="rotten tomato score" />
+            <img src="/PngItem_1381056 1.png" className="" alt="rotten tomato score" />
           </div>
         </div>
         <p className="text-sm text-gray-500 mt-4">
