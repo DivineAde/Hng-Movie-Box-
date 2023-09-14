@@ -5,9 +5,11 @@ import { AiTwotoneStar } from "react-icons/ai";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
+const API_KEY = "a7b45b91a4a49e51474aed718b0bb738";
+
 async function getMovie(movieId) {
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.API_KEY}`
+    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`
   );
   return await res.json();
 }

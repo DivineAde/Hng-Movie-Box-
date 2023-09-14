@@ -2,7 +2,7 @@ import Card from "@/components/Card";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
-const API_KEY = process.env.API_KEY;
+const API_KEY = "a7b45b91a4a49e51474aed718b0bb738";
 
 export default async function More({ searchParams }) {
   const genre = searchParams.genre || "fetchTrending";
