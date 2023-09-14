@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+.hamBox {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: 0.3s ease;
+  padding: 1.5em;
+  background: red;
+}
+
+
+
+.hamBoxOpen {
+  background: transparent;
+}
+
+.line-top,
+.line-bottom {
+  margin: 0 auto;
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 2px;
+  border-radius: 10px;
+  background: #fff;
+  left: 0;
+  right: 0;
+  transform: rotate(0deg);
+  transform-origin: center bottom;
+  transition: all 0.4s;
+}
+
+.line-top {
+  top: 1.7em;
+}
+
+.line-bottom {
+  bottom: 1.5em;
+}
+
+.line-top.spin {
+  top: 1.5em;
+  transform: rotate(135deg) translate(2px, 0);
+  background: red;
+}
+
+.line-bottom.spin {
+  bottom: 1.5em;
+  transform: rotate(225deg) translate(2px, 0px);
+  background: red;
+}
+
+.bg_navbar{
+  background: rgba( 0, 0, 0, 0.3 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 1.5px );
+  -webkit-backdrop-filter: blur( 1.5px );
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
