@@ -68,7 +68,7 @@ export default async function MoviePage({ params }) {
               data-testid="movie-runtime"
               className="font-semibold mr-2 text-base lg:text-lg"
             >
-              {movie.runtime} minutes
+              {movie.runtime}
             </span>
             <div className="flex gap-4">
               <label className="px-2 py-1 text-rose-600 bg-white border rounded-full">

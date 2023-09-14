@@ -11,7 +11,7 @@ export default async function More({ searchParams }) {
   if (genre === "fetchTopRated") {
     endpoint = "movie/top_rated";
   } else {
-    endpoint = "movie/popular";
+    endpoint = "movie/top_rated";
   }
 
   const res = await fetch(
