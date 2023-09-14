@@ -20,7 +20,7 @@ export default function SideBar() {
         </span>
       </Link>
 
-      <div className="flex flex-wrap flex-row lg:flex-col lg:justify-centergap-2 lg:gap-6 pt-4 lg:pt-12">
+      <div className="flex flex-wrap flex-row lg:flex-col lg:justify-center gap-2 lg:gap-6 pt-4 lg:pt-12">
         <Link href={"/"} className="icon-style flex gap-2 items-center">
           <BiHomeAlt className="w-5 h-5 cursor-pointer" />
           Home
