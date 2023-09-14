@@ -15,7 +15,7 @@ export default function Footer() {
         <AiOutlineTwitter />
         <AiFillYoutube />
       </div>
-      <ul className="flex gap-10 pt-5">
+      <ul className="flex flex-col md:flex-row gap-6 md:gap-10 items-center pt-5">
         <li className="font-bold text-sm">Conditions of Use</li>
         <li className=" font-bold text-sm">Privacy & Policy</li>
         <li className="font-bold text-sm">Press Room</li>
