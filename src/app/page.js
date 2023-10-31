@@ -13,7 +13,7 @@ export default async function Home({ searchParams }) {
   if (genre === "fetchTopRated") {
     endpoint = "movie/top_rated";
   } else {
-    endpoint = "movie/top_rated";
+    endpoint = "movie/popular";
   }
 
   const res = await fetch(
