@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { BsBookmark, BsFillBookmarkCheckFill } from "react-icons/bs"
 
 export default function Card({ result }) {
   const [isLiked, setIsLiked] = useState(false);
@@ -41,19 +42,29 @@ export default function Card({ result }) {
             }`}
             width={700}
             height={1500}
-            className="group-hover:opacity-80 transition-opacity duration-200"
+            className="group-hover:opacity-80 transition-opacity duration-200 rounded-lg"
             placeholder="blur"
             blurDataURL="/spinner.svg"
             alt="image is not available"
           />
           <button
-            className="absolute top-[5%] left-[80%] bg-slate-400 p-2 rounded-full"
+            className="absolute top-[5%] left-[80%] bg-transparent p-2 rounded-full"
             onClick={(e) => toggleLike(e)}
           >
             {isLiked ? (
               <AiFillHeart className="w-7 h-7 text-red-600" />
             ) : (
-              <AiOutlineHeart className="w-7 h-7" />
+              <AiOutlineHeart className="w-7 h-7 text-white" />
+            )}
+          </button>
+          <button
+            className="absolute top-[5%] right-[80%] bg-transparent p-2 rounded-full"
+            onClick={(e) => toggleLike(e)}
+          >
+            {isLiked ? (
+              <BsBookmark className="w-7 h-7" />
+            ) : (
+              <BsFillBookmarkCheckFill className="w-7 h-7 text-white" />
             )}
           </button>
         </div>

@@ -8,6 +8,10 @@ export default function HomePage({
   rating,
 }) {
   const ratingPercentage = Math.round((rating / 10) * 100);
+  const maxWords = 60;
+  const words = overview.split(" ");
+  const truncatedOverview = words.slice(0, maxWords).join(" ");
+  const showEllipsis = words.length > maxWords;
   return (
     <section
       className="hero bg-cover bg-center bg-no-repeat w-full h-screen"
@@ -35,7 +39,8 @@ export default function HomePage({
             <img src="/PngItem_1381056 1.png" alt="rotten tomato score" />
           </div>
         </div>
-        <p>{overview}</p>
+        <p>{truncatedOverview}
+          {showEllipsis ? "..." : ""}</p>
         <button className=" bg-red-700 text-white py-2 px-3 rounded-lg uppercase font-semibold mt-2 flex items-center gap-1">
           <svg
             width="20"
