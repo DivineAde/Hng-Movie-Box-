@@ -16,7 +16,7 @@ export default function SearchBar() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex w-3/4 md:w-[50%] mx-auto justify-between items-center px-5 py-2 border-2 border-white rounded-md"
+      className="relative flex w-3/4 md:w-[50%] mx-auto justify-between items-center px-5 py-2 border-2 border-white rounded-md"
     >
       <input
         value={search}
@@ -25,8 +25,8 @@ export default function SearchBar() {
         placeholder="What do you want to watch?"
         className="w-full h-7 rounded-sm outline-none bg-transparent flex-1 text-white"
       />
-      <button type="submit" disabled={!search}><svg
-        className=" cursor-pointer"
+      <button type="submit" className="bg-blue-700 py-[13px] px-5 absolute top-[3%] right-0 cursor-pointer" disabled={!search}><svg
+        className=""
         width="16"
         height="16"
         viewBox="0 0 16 16"

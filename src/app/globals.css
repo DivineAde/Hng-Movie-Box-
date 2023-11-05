@@ -68,3 +68,10 @@
   -webkit-backdrop-filter: blur( 1.5px );
   border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
+
+.bg_sidenav {
+  background: rgba(21, 2, 2, 0.69);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}

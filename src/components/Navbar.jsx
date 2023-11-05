@@ -6,6 +6,8 @@ import SearchBar from "./SearchBar";
 import Link from "next/link";
 import { FaUserCircle } from "react-icons/fa";
 import { BiUserCircle } from "react-icons/bi";
+import { BsChevronDown } from "react-icons/bs"
+import { VscBellDot } from "react-icons/vsc"
 
 export default function Navbar() {
   const [navOpen, setNavOpen] = useState(false);
@@ -20,7 +22,9 @@ export default function Navbar() {
       </Link>
       <SearchBar />
       <div className="hidden md:flex items-center gap-2">
-        <BiUserCircle className="w-7 h-7 text-white cursor-pointer" />
+        <VscBellDot className="text-white w-7 h-7 cursor-pointer" />
+        <BiUserCircle className="w-7 h-7 text-white" />
+        <BsChevronDown className=" text-white cursor-pointer" />
         {/*
         <div className="menu-toogle" onClick={() => setNavOpen(!navOpen)}>
             <div className={navOpen ? "hamBox hamBoxOpen" : "hamBox"}>

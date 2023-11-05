@@ -4,11 +4,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import { BsBookmark, BsFillBookmarkCheckFill } from "react-icons/bs"
+import { BsBookmark, BsFillBookmarkCheckFill, BsFillBookmarkDashFill } from "react-icons/bs"
 
 export default function Card({ result }) {
   const [isLiked, setIsLiked] = useState(false);
+  const [isBookMarked, setIsBookMarked] = useState(false);
+
   const localStorageKey = `isLiked_${result.id}`;
+  const localStorageKeyBookmark = `isBookMarked_${result.id}`
 
   const ratingPercentage = Math.round((result.vote_average / 10) * 100);
 
@@ -18,6 +21,20 @@ export default function Card({ result }) {
       setIsLiked(JSON.parse(savedLikedState));
     }
   }, []);
+
+  useEffect(() => {
+    const savedBookmarkState = localStorage.getItem(localStorageKeyBookmark);
+    if (savedBookmarkState) {
+      setIsBookMarked(JSON.parse(savedBookmarkState));
+    }
+  }, []);
+
+  const toggleBookmarked = (e) => {
+    e.preventDefault();
+    const newBookmarkedState = !isBookMarked;
+    setIsBookMarked(newBookmarkedState);
+    localStorage.setItem(localStorageKeyBookmark, JSON.stringify(newBookmarkedState));
+  };
 
   const toggleLike = (e) => {
     e.preventDefault();
@@ -59,12 +76,12 @@ export default function Card({ result }) {
           </button>
           <button
             className="absolute top-[5%] right-[80%] bg-transparent p-2 rounded-full"
-            onClick={(e) => toggleLike(e)}
+            onClick={(e) => toggleBookmarked(e)}
           >
-            {isLiked ? (
-              <BsBookmark className="w-7 h-7" />
+            {isBookMarked ? (
+              <BsFillBookmarkCheckFill className="w-7 h-7 text-yellow-500" />
             ) : (
-              <BsFillBookmarkCheckFill className="w-7 h-7 text-white" />
+              <BsFillBookmarkDashFill className="w-7 h-7 text-white" />
             )}
           </button>
         </div>

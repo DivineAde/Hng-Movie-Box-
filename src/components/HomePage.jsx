@@ -7,6 +7,8 @@ export default function HomePage({
   name,
   rating,
 }) {
+  const voteAverage = rating.toFixed(1);
+
   const ratingPercentage = Math.round((rating / 10) * 100);
   const maxWords = 60;
   const words = overview.split(" ");
@@ -23,8 +25,8 @@ export default function HomePage({
       }}
     >
       <Navbar />
-      <div className="absolute top-1/4 left-[3%] md:top-[35%]  w-[350px] md:w-[400px] text-white">
-        <h1 className=" text-5xl font-bold">{title || name}</h1>
+      <div className="absolute top-1/4 left-[3%] md:top-[30%]  w-[350px] md:w-[400px] text-white">
+        <h1 className="text-4xl md:text-5xl font-bold">{title || name}</h1>
         <div className="flex items-center gap-12">
           <div className="flex gap-1">
             <img
@@ -32,16 +34,18 @@ export default function HomePage({
               className=""
               alt="imbd"
             />
-            <span>{rating} / 10.0</span>
+            <span>{voteAverage} / 10.0</span>
           </div>
           <div className="flex items-center gap-1">
             <p>{ratingPercentage}%</p>
             <img src="/PngItem_1381056 1.png" alt="rotten tomato score" />
           </div>
         </div>
-        <p>{truncatedOverview}
-          {showEllipsis ? "..." : ""}</p>
-        <button className=" bg-red-700 text-white py-2 px-3 rounded-lg uppercase font-semibold mt-2 flex items-center gap-1">
+        <p>
+          {truncatedOverview}
+          {showEllipsis ? "..." : ""}
+        </p>
+        <button className=" bg-orange-500 text-white py-2 px-3 rounded-lg capitalize font-semibold mt-2 flex items-center gap-1 text-sm">
           <svg
             width="20"
             height="20"
@@ -56,7 +60,7 @@ export default function HomePage({
               fill="white"
             />
           </svg>
-          Watch trailer
+          Watch me
         </button>
       </div>
     </section>

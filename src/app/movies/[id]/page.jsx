@@ -14,9 +14,19 @@ async function getMovie(movieId) {
   return await res.json();
 }
 
+async function getTrailer(movieId) {
+  const trial = await fetch(
+    `http://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}`
+  );
+  return await trial.json();
+}
+
 export default async function MoviePage({ params }) {
   const movieId = params.id;
   const movie = await getMovie(movieId);
+  const trailer = await getTrailer(movieId);
+
+  const watch = trailer.results[0].key;
 
   // Convert the movie's release date to UTC date object
   const releaseDateUTC = new Date(movie.release_date).toUTCString();
@@ -26,7 +36,8 @@ export default async function MoviePage({ params }) {
   return (
     <div className="flex flex-col lg:flex-row">
       <SideBar />
-      <div className="flex flex-col px-6 w-full ml-0 lg:ml-[20%]">
+      <div className="flex flex-col px-6 w-full mt-2 ml-0 lg:ml-[19%]">
+      <iframe className="w-full" width="1000" height="480" src={`https://www.youtube.com/embed/${watch}`} title="Official Clip &#39; – Tobin Bell, Shawnee Smith" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         <div className="relative w-full py-2">
           <Image
             src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
@@ -42,12 +53,12 @@ export default async function MoviePage({ params }) {
             blurDataURL="/spinner.svg"
             alt="Movie poster"
           />
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+          {/*<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
             <button className="rounded-full p-4 border-2 bg_navbar">
               <img src="/Play.png" alt="Play" />
             </button>
             <p className="text-white font-semibold">Watch trailer</p>
-          </div>
+          </div>*/}
         </div>
 
         <div className="flex justify-between items-center pt-2">
@@ -91,6 +102,7 @@ export default async function MoviePage({ params }) {
           <p data-testid="movie-overview">{movie.overview}</p>
         </div>
 
+        
         <Footer />
       </div>
     </div>
