@@ -1,60 +1,95 @@
-import Image from "next/image";
+"use client";
+
+import React, { useState } from "react";
+
 import Link from "next/link";
-import { BiHomeAlt, BiUserCircle } from "react-icons/bi";
-import { BsCollectionPlay, BsCameraReels, BsFillQuestionCircleFill } from "react-icons/bs";
-import { SlCalender } from "react-icons/sl";
-import { TbLogout } from "react-icons/tb";
+import { usePathname } from "next/navigation";
 
-export default function SideBar() {
+import { SIDENAV_ITEMS } from "@/constants";
+import { Icon } from "@iconify/react";
+import Image from "next/image";
+
+const SideNav = () => {
   return (
-    <aside className="relative lg:fixed top-0 left-0 z-50 flex flex-col gap-6 bg-blue-700 w-full lg:w-[20%] px-5 py-4 h-[30vh] lg:h-screen">
-      <Link href={"/"}>
-        <div className="flex items-center gap-2 text-white text-lg font-extrabold">
-          <Image
-            src="/tv.png"
-            width={50}
-            height={50}
-            objectFit="cover"
-            className="moviebox logo"
-          />
-          MovieBox
+    <div className="md:w-60 bg-white h-screen flex-1 fixed border-r border-zinc-200 hidden md:flex z-50">
+      <div className="flex flex-col space-y-6 w-full">
+        <Link
+          href="/"
+          className="flex flex-row space-x-3 items-center justify-center md:justify-start md:px-6 border-b border-zinc-200 h-12 w-full"
+        >
+          <span className="hidden md:flex">
+            <Image src="/tv.png" width={40} height={40} alt="moviebox logo" />
+          </span>
+        </Link>
+
+        <div className="flex flex-col space-y-2  md:px-6 ">
+          {SIDENAV_ITEMS.map((item, idx) => {
+            return <MenuItem key={idx} item={item} />;
+          })}
         </div>
-      </Link>
-
-      <div className="flex flex-wrap flex-row lg:flex-col lg:justify-center gap-2 lg:gap-6 pt-4 lg:pt-12">
-        <Link href={"/"} className="icon-style flex gap-2 items-center text-gray-200 py-2 px-2 rounded-lg text-sm">
-          <BiHomeAlt className="w-7 h-7 cursor-pointer text-white" />
-          Home
-        </Link>
-        <Link href={"/"} className="icon-style flex gap-2 items-center  text-gray-200 py-2 px-2 rounded-lg text-sm bg_sidenav">
-          <BsCameraReels className="w-7 h-7 cursor-pointer text-white" />
-          Movies
-        </Link>
-        <Link
-          href={"/"}
-          className="icon-style flex gap-2 items-center text-gray-200 py-2 px-2 rounded-lg text-sm"
-        >
-          <BsCollectionPlay className="w-7 h-7 cursor-pointer text-white" />
-          Tv Series
-        </Link>
-        <Link
-          href={"/"}
-          className="icon-style flex gap-2 items-center  text-gray-200 py-2 px-2 rounded-lg text-sm"
-        >
-          <SlCalender className=" w-7 h-7 cursor-pointer text-white" />
-          Upcoming
-        </Link>
-
-        <Link href={"/"} className="icon-style flex gap-2 items-center text-gray-200 py-2 px-2 rounded-lg text-sm">
-          <TbLogout className=" w-7 h-7 cursor-pointer text-white" />
-          Logout
-        </Link>
       </div>
-
-      <div className="absolute bottom-0 left-0 px-2 py-2 flex items-center justify-between w-full">
-        <BiUserCircle className="w-7 h-7 text-white" />
-        <BsFillQuestionCircleFill className="w-7 h-7" />
-      </div>
-    </aside>
+    </div>
   );
-}
+};
+
+export default SideNav;
+
+const MenuItem = ({ item }) => {
+  const pathname = usePathname();
+  const [subMenuOpen, setSubMenuOpen] = useState(false);
+  const toggleSubMenu = () => {
+    setSubMenuOpen(!subMenuOpen);
+  };
+
+  return (
+    <div className="">
+      {item.submenu ? (
+        <>
+          <button
+            onClick={toggleSubMenu}
+            className={`flex flex-row items-center p-2 rounded-lg hover-bg-zinc-100 w-full justify-between hover:bg-zinc-100 ${
+              pathname.includes(item.path) ? "bg-zinc-100" : ""
+            }`}
+          >
+            <div className="flex flex-row space-x-4 items-center">
+              {item.icon}
+              <span className="font-semibold text-xl  flex">{item.title}</span>
+            </div>
+
+            <div className={`${subMenuOpen ? "rotate-180" : ""} flex`}>
+              <Icon icon="lucide:chevron-down" width="24" height="24" />
+            </div>
+          </button>
+
+          {subMenuOpen && (
+            <div className="my-2 ml-12 flex flex-col space-y-4">
+              {item.subMenuItems?.map((subItem, idx) => {
+                return (
+                  <Link
+                    key={idx}
+                    href={subItem.path}
+                    className={`${
+                      subItem.path === pathname ? "font-bold" : ""
+                    }`}
+                  >
+                    <span>{subItem.title}</span>
+                  </Link>
+                );
+              })}
+            </div>
+          )}
+        </>
+      ) : (
+        <Link
+          href={item.path}
+          className={`flex flex-row space-x-4 items-center p-2 rounded-lg hover:bg-zinc-100 ${
+            item.path === pathname ? "bg-zinc-100" : ""
+          }`}
+        >
+          {item.icon}
+          <span className="font-semibold text-xl flex">{item.title}</span>
+        </Link>
+      )}
+    </div>
+  );
+};

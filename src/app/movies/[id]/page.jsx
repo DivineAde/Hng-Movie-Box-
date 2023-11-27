@@ -1,9 +1,15 @@
+"use client";
+
 import SideBar from "@/components/Sidebar";
 import Image from "next/image";
 import { BsDot } from "react-icons/bs";
+import { useRouter } from "next/navigation";
 import { AiTwotoneStar } from "react-icons/ai";
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import MenuSideBar from "@/components/MenuSideBar";
+import HeaderMobile from "@/components/MenuBarMobile";
 
 const API_KEY = "a7b45b91a4a49e51474aed718b0bb738";
 
@@ -22,6 +28,9 @@ async function getTrailer(movieId) {
 }
 
 export default async function MoviePage({ params }) {
+  const router = useRouter();
+  console.log(router);
+
   const movieId = params.id;
   const movie = await getMovie(movieId);
   const trailer = await getTrailer(movieId);
@@ -34,10 +43,18 @@ export default async function MoviePage({ params }) {
   const voteAverage = movie.vote_average.toFixed(1);
 
   return (
-    <div className="flex flex-col lg:flex-row">
-      <SideBar />
-      <div className="flex flex-col px-6 w-full mt-2 ml-0 lg:ml-[19%]">
-      <iframe className="w-full" width="1000" height="480" src={`https://www.youtube.com/embed/${watch}`} title="Official Clip &#39; – Tobin Bell, Shawnee Smith" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <div className="">
+      <div className="flex flex-col px-2 w-full mt-2 ml-0">
+        <iframe
+          className="w-full"
+          width="1000"
+          height="480"
+          src={`https://www.youtube.com/embed/${watch}`}
+          title="Official Clip &#39; – Tobin Bell, Shawnee Smith"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
         <div className="relative w-full py-2">
           <Image
             src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
@@ -102,7 +119,6 @@ export default async function MoviePage({ params }) {
           <p data-testid="movie-overview">{movie.overview}</p>
         </div>
 
-        
         <Footer />
       </div>
     </div>

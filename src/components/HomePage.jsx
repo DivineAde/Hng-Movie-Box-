@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Navbar from "./Navbar";
 
 export default function HomePage({
@@ -15,17 +16,17 @@ export default function HomePage({
   const truncatedOverview = words.slice(0, maxWords).join(" ");
   const showEllipsis = words.length > maxWords;
   return (
-    <section
-      className="hero bg-cover bg-center bg-no-repeat w-full h-screen"
+    <div
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
+        height: "100vh",
+        position: "relative",
       }}
     >
-      <Navbar />
-      <div className="absolute top-1/4 left-[3%] md:top-[30%]  w-[350px] md:w-[400px] text-white">
+      <div className="absolute top-1/4 left-[3%] md:top-[30%]  w-[300px] md:w-[400px] text-white">
         <h1 className="text-4xl md:text-5xl font-bold">{title || name}</h1>
         <div className="flex items-center gap-12">
           <div className="flex gap-1">
@@ -63,6 +64,6 @@ export default function HomePage({
           Watch me
         </button>
       </div>
-    </section>
+    </div>
   );
 }
