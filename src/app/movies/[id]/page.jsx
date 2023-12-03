@@ -22,7 +22,7 @@ async function getMovie(movieId) {
 
 async function getTrailer(movieId) {
   const trial = await fetch(
-    `http://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}`
+    `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}`
   );
   return await trial.json();
 }
