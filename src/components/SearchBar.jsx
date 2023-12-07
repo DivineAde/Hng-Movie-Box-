@@ -22,10 +22,10 @@ export default function SearchBar() {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         type="text"
-        placeholder="What do you want to watch?"
-        className="w-full h-7 rounded-sm outline-none bg-transparent flex-1 text-white"
+        placeholder="Search here!"
+        className="w-full h-4 rounded-sm outline-none bg-transparent flex-1 text-black"
       />
-      <button type="submit" className="bg-blue-700 py-[13px] px-5 absolute top-[3%] right-0 cursor-pointer" disabled={!search}><svg
+      <button type="submit" className=" bg-rose-500 py-2 px-2 absolute top-[3%] right-0 cursor-pointer" disabled={!search}><svg
         className=""
         width="16"
         height="16"

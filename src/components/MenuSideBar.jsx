@@ -9,6 +9,7 @@ import Image from "next/image";
 import { VscBellDot } from "react-icons/vsc";
 import { BiUserCircle } from "react-icons/bi";
 import { BsChevronDown } from "react-icons/bs";
+import SearchBar from "./SearchBar";
 
 const MenuSideBar = () => {
   const scrolled = useScroll(5);
@@ -35,6 +36,8 @@ const MenuSideBar = () => {
             </span>
           </Link>
         </div>
+
+        <SearchBar />
 
         <div className="hidden md:flex gap-2 items-center ">
           <VscBellDot className="text-black w-7 h-7 cursor-pointer" />

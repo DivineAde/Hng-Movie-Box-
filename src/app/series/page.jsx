@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { AiFillHeart } from "react-icons/ai";
+import Link from "next/link";
 
 const API_KEY = "a7b45b91a4a49e51474aed718b0bb738";
 
@@ -22,6 +23,7 @@ const TvSeries = async () => {
       {results.map((series) => (
         <div key={series.id} series={series} data-testid="movie-card" className="pb-6">
           <div className="relative">
+            <Link href={`/series/tv/${series.id}`}>
             <Image
               data-testid="movie-poster"
               src={`https://image.tmdb.org/t/p/original/${
@@ -34,6 +36,7 @@ const TvSeries = async () => {
               blurDataURL="/spinner.svg"
               alt="image is not available"
             />
+            </Link>
             <button
               className="absolute top-[5%] left-[80%] bg-transparent p-2 rounded-full"
               

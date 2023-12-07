@@ -28,7 +28,6 @@ export default async function SearchItem({ params }) {
 
       {results && (
         <div className="pt-[5%]">
-          <Navbar />
           <Results results={results} />
         </div>
       )}
